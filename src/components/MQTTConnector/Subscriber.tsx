@@ -20,13 +20,14 @@ export const Subscriber = () => {
   const handleUnsub = (event: any) => {
     event.preventDefault();
 
-    const topic = event.target.topic.value;
-    mqttUnSubscribe(topic);
+    mqttUnSubscribe(subTopic);
   };
 
   const handleChange = (event: any) => {
-    const { key, value } = event.target;
-    setSubtopic((prevTopic) => ({ ...prevTopic, [key]: value }));
+    setSubtopic((prevTopic) => ({
+      ...prevTopic,
+      [event.target.id]: event.target.value,
+    }));
   };
 
   return (

@@ -26,8 +26,10 @@ export const Connection = () => {
   };
 
   const handleChange = (event: any) => {
-    const { key, value } = event.target;
-    setConnectionOptions((prevOptions) => ({ ...prevOptions, [key]: value }));
+    setConnectionOptions((prevOptions) => ({
+      ...prevOptions,
+      [event.target.id]: event.target.value,
+    }));
   };
 
   return (
