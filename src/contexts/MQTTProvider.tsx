@@ -96,6 +96,9 @@ export const MQTTProvider = ({ children }: { children: ReactNode }) => {
             console.log("Unsubscribe error", error);
             return;
           }
+          console.log(
+            `[${MQTTProvider.name}]: MQTT unsubscribed from topic ${topic} `
+          );
           setIsSubscribed(false);
         });
       }
