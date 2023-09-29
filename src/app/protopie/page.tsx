@@ -17,7 +17,7 @@ const darkTheme = createTheme({
 export default function Home() {
   const [showMQTT, setShowMQTT] = useState(false);
   return (
-    <main className="relative w-full min-h-full">
+    <main className="relative w-full min-h-full z-10">
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
         <div className="absolute z-20 top-5" style={{ right: "500px" }}>
@@ -42,8 +42,13 @@ export default function Home() {
         </div>
       </ThemeProvider>
       <IFrame
+        className="z-0"
         src="https://cloud.protopie.io/p/fbb1f5fbfcf05178cd208d99?ui=false&scaleToFit=true&enableHotspotHints=false&cursorType=touch&mockup=false&bgColor=%23F5F5F5&playSpeed=1&handoff=true"
         targetDisplay="system"
+      />
+      <div
+        className="absolute z-20 w-full h-[745px] bg-yellow-300/90"
+        style={{ top: "95px" }}
       />
     </main>
   );
