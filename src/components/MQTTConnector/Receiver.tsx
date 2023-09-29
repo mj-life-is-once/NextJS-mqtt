@@ -13,12 +13,22 @@ export const Receiver = () => {
   }, [payload]);
 
   return (
-    <Card className="border bg-transparent">
+    <Card className="border bg-neutral-800">
       <div className="flex flex-col h-80 overflow-auto">
+        <div className="flex flex-row justify-around gap-3 mb-3">
+          <div className="text-sm text-center text-white uppercase font-extrabold">
+            Topic
+          </div>
+          <div className="text-sm text-center text-white uppercase font-extrabold ">
+            Message
+          </div>
+        </div>
         {messages.map((message, index) => (
-          <div key={index} className="flex flex-row justify-between">
-            <div className="text-sm text-yellow-300">{message.topic}</div>
-            <div className="text-sm text-slate-300">{message.message}</div>
+          <div key={index} className="flex flex-row justify-between gap-3">
+            <div className="text-sm text-emerald-300">{message.topic}</div>
+            <div className="text-sm text-left text-slate-300">
+              {message.message}
+            </div>
           </div>
         ))}
       </div>

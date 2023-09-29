@@ -1,24 +1,22 @@
-import { ReactNode } from "react";
-import { twMerge } from "tailwind-merge";
+import CloseIcon from "@mui/icons-material/Close";
 
-export const Card = ({
+export const Popup = ({
   children,
   className,
   title,
+  onClose,
 }: {
-  children: ReactNode;
+  children: React.ReactNode;
   className?: string;
   title?: string;
+  onClose: () => void;
 }) => {
   return (
-    <div
-      className={twMerge(
-        `relative rounded-lg p-5 shadow-md ${className ?? ""}`
-      )}
-    >
+    <div className={`relative rounded-lg p-5 shadow-md ${className ?? ""}`}>
       {title && (
         <div className="flex flex-row justify-between mb-5">
           <div className="text-lg font-bold">{title}</div>
+          <CloseIcon onClick={onClose} />
         </div>
       )}
       {children}

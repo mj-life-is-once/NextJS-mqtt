@@ -1,4 +1,6 @@
 import { ReactNode, MouseEventHandler } from "react";
+import { twMerge } from "tailwind-merge";
+
 export const Button = ({
   children,
   onClick,
@@ -12,9 +14,11 @@ export const Button = ({
 }) => {
   return (
     <button
-      className={`px-2 py-3 border shadow-md bg-slate-800 font-extrabold rounded-lg text-sm hover:bg-slate-500 ${
-        className ?? ""
-      }`}
+      className={twMerge(
+        `px-2 py-3 border shadow-md font-extrabold rounded-lg text-sm hover:bg-slate-500 ${
+          className ?? ""
+        }`
+      )}
       onClick={onClick}
       type={type}
     >

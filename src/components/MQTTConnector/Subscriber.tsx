@@ -33,7 +33,9 @@ export const Subscriber = () => {
     <Card className="border bg-transparent">
       <form className="flex flex-col gap-2" onSubmit={onSubmit}>
         <div className="text-right">
-          <Button type="submit">Subscribe</Button>
+          <Button className="mr-2" type="submit">
+            Subscribe
+          </Button>
           {isSubscribed && <Button onClick={handleUnsub}>Unsubscribe</Button>}
         </div>
         <label htmlFor="topic" className="text-sm text-slate-100">
@@ -49,15 +51,21 @@ export const Subscriber = () => {
         <label htmlFor="qos" className="text-sm text-slate-100">
           QoS
         </label>
-        <select value={subTopic.qos} onChange={handleChange}>
-          {qosOptions.map(
-            (option: { label: string; value: number }, index: number) => (
-              <option key={index} value={option.value}>
-                {option.label}
-              </option>
-            )
-          )}
-        </select>
+        <div className="relative">
+          <select
+            className="p-1 text-slate-500 text-sm rounded"
+            value={subTopic.qos}
+            onChange={handleChange}
+          >
+            {qosOptions.map(
+              (option: { label: string; value: number }, index: number) => (
+                <option key={index} value={option.value}>
+                  {option.label}
+                </option>
+              )
+            )}
+          </select>
+        </div>
       </form>
     </Card>
   );

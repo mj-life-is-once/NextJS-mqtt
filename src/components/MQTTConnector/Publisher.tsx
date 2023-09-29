@@ -4,7 +4,7 @@ import { Button } from "../Button";
 import { useState } from "react";
 
 export const Publisher = () => {
-  const { qosOptions, publish } = useMQTT();
+  const { qosOptions, mqttPublish } = useMQTT();
   const [pubTopic, setPubTopic] = useState({
     topic: "testtopic/react",
     qos: 0,
@@ -13,11 +13,11 @@ export const Publisher = () => {
 
   const onSubmit = (event: any) => {
     event.preventDefault();
-    publish(event.target);
+    mqttPublish(pubTopic);
   };
 
   const handleChange = (event: any) => {
-    console.log(pubTopic);
+    // console.log(pubTopic);
     setPubTopic((prevTopic) => ({
       ...prevTopic,
       [event.target.id]: event.target.value,
@@ -43,13 +43,20 @@ export const Publisher = () => {
         <label htmlFor="qos" className="text-sm text-slate-100">
           QoS
         </label>
-        <select value={pubTopic.qos} onChange={handleChange}>
-          {qosOptions.map(
-            (option: { label: string; value: number }, index: number) => (
-              <option key={index}>{option.label}</option>
-            )
-          )}
-        </select>
+        <div className="relative">
+          <select
+            className="p-1 text-slate-500 text-sm rounded"
+            value={pubTopic.qos}
+            onChange={handleChange}
+          >
+            {qosOptions.map(
+              (option: { label: string; value: number }, index: number) => (
+                <option key={index}>{option.label}</option>
+              )
+            )}
+          </select>
+        </div>
+
         <label htmlFor="payload" className="text-sm text-slate-100">
           Payload
         </label>
