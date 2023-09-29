@@ -1,6 +1,6 @@
 import { useMQTT } from "@/contexts/MQTTProvider";
-import { Card } from "../Card";
-import { Button } from "../Button";
+import { Card } from "../_ui/Card";
+import { Button } from "../_ui/Button";
 import { useState } from "react";
 
 export const Publisher = () => {

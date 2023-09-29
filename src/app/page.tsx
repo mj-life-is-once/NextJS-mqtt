@@ -1,10 +1,10 @@
 "use client";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import { Portal } from "@/components/Portal";
+import { Portal } from "@/components/_ui/Portal";
 import { MQTT } from "@/components/MQTTConnector/MQTT";
 import { useState } from "react";
-import { Button } from "@/components/Button";
+import { Button } from "@/components/_ui/Button";
 
 const darkTheme = createTheme({
   palette: {

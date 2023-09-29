@@ -5,7 +5,7 @@ import { Subscriber } from "./Subscriber";
 import { Publisher } from "./Publisher";
 import { Receiver } from "./Receiver";
 import { Connection } from "./Connection";
-import { Popup } from "../Popup";
+import { Popup } from "../_ui/Popup";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";

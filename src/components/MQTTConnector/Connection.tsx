@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Card } from "../Card";
+import { Card } from "../_ui/Card";
 import { useMQTT } from "@/contexts/MQTTProvider";
-import { Button } from "../Button";
+import { Button } from "../_ui/Button";
 
 export const Connection = () => {
   const { mqttConnect, mqttDisconnect } = useMQTT();
