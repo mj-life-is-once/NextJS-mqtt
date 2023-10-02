@@ -1,6 +1,6 @@
 "use client";
 import { ReactNode } from "react";
-import { MQTTProvider, useMQTT } from "@/contexts/MQTTProvider";
+import { useMQTT } from "@/contexts/MQTTProvider";
 import { Subscriber } from "./Subscriber";
 import { Publisher } from "./Publisher";
 import { Receiver } from "./Receiver";
@@ -59,7 +59,7 @@ export const MQTT = ({
   onClose: () => void;
 }) => {
   return (
-    <MQTTProvider>
+    <div>
       {show && (
         <Popup
           className="bg-slate-800 w-full h-full"
@@ -120,6 +120,6 @@ export const MQTT = ({
         </Popup>
       )}
       {children}
-    </MQTTProvider>
+    </div>
   );
 };
