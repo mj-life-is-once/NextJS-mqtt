@@ -1,15 +1,53 @@
 "use client";
 import { ReactNode } from "react";
-import { MQTTProvider } from "@/contexts/MQTTProvider";
+import { MQTTProvider, useMQTT } from "@/contexts/MQTTProvider";
 import { Subscriber } from "./Subscriber";
 import { Publisher } from "./Publisher";
 import { Receiver } from "./Receiver";
 import { Connection } from "./Connection";
 import { Popup } from "../Popup";
 import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
+import { styled } from "@mui/material/styles";
+import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
+import MuiAccordionSummary, {
+  AccordionSummaryProps,
+} from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
+import { useCallback } from "react";
+
+export const AccordionSummary = styled((props: AccordionSummaryProps) => (
+  <MuiAccordionSummary
+    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: "0.9rem" }} />}
+    {...props}
+  />
+))(({ theme }) => {
+  const { connectionStatus } = useMQTT();
+  const backgroundColor = useCallback(
+    (theme: any) => {
+      if (theme.palette.mode == "dark") {
+        if (connectionStatus == "connected") return theme.palette.success.main;
+        else return "rgba(255, 255, 255, .05)";
+      } else {
+        if (connectionStatus == "connected") return theme.palette.success.main;
+        else return "rgba(0, 0, 0, .03)";
+      }
+    },
+    [connectionStatus]
+  );
+
+  return {
+    backgroundColor: backgroundColor(theme),
+    flexDirection: "row-reverse",
+    "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
+      transform: "rotate(90deg)",
+    },
+    "& .MuiAccordionSummary-content": {
+      marginLeft: theme.spacing(1),
+    },
+  };
+});
 
 export const MQTT = ({
   children,

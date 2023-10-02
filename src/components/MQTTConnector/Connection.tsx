@@ -36,9 +36,13 @@ export const Connection = () => {
     <Card className="border bg-transparent">
       <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
         <div className="text-right">
-          {connectionStatus === "disconnected" && (
+          {connectionStatus === "disconnected" ? (
             <Button className="mr-2" type="submit">
               Connect
+            </Button>
+          ) : (
+            <Button className="mr-2" type="button" disabled={true}>
+              Connected
             </Button>
           )}
           {connectionStatus === "connected" && (
