@@ -6,6 +6,7 @@ import { MQTT } from "@/components/MQTTConnector/MQTT";
 import { useState } from "react";
 import { Button } from "@/components/_ui/Button";
 import { IFrame } from "@/components/_ui/IFrame";
+import Map from "@/components/_ui/Map";
 
 const darkTheme = createTheme({
   palette: {
@@ -14,6 +15,10 @@ const darkTheme = createTheme({
 });
 // https://medium.com/100-days-in-kyoto-to-create-a-web-app-with-google/day-12-showing-user-location-on-embedded-google-maps-with-geolocation-api-and-react-a8ea40d1e891
 
+const coord = {
+  lat: 51.5473108,
+  lng: -0.0239515,
+};
 export default function Home() {
   const [showMQTT, setShowMQTT] = useState(false);
   return (
@@ -47,9 +52,11 @@ export default function Home() {
         targetDisplay="system"
       />
       <div
-        className="absolute z-20 w-full h-[745px] bg-yellow-300/90"
+        className="absolute z-20 w-[1536px] h-[745px] bg-yellow-300/90"
         style={{ top: "95px" }}
-      />
+      >
+        <Map width="1536px" height="745px" coord={coord} />
+      </div>
     </main>
   );
 }
