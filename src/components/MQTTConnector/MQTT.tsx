@@ -27,10 +27,10 @@ export const AccordionSummary = styled((props: AccordionSummaryProps) => (
   const backgroundColor = useCallback(
     (theme: any) => {
       if (theme.palette.mode == "dark") {
-        if (connectionStatus == "connected") return theme.palette.success.main;
+        if (connectionStatus == "connected") return "#009688";
         else return "rgba(255, 255, 255, .05)";
       } else {
-        if (connectionStatus == "connected") return theme.palette.success.main;
+        if (connectionStatus == "connected") return "#009688";
         else return "rgba(0, 0, 0, .03)";
       }
     },
@@ -66,7 +66,7 @@ export const MQTT = ({
           title="MQTT Tools"
           onClose={onClose}
         >
-          <div className="flex flex-col  gap-5 h-[35rem] overflow-auto">
+          <div className="flex flex-col gap-5 h-[35rem] overflow-auto">
             <Accordion>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
