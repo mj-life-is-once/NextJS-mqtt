@@ -17,17 +17,17 @@ export const MQTTProvider = ({ children }: { children: ReactNode }) => {
   const [client, setClient] = useState<any>(null);
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [payload, setPayload] = useState({});
-  const [connectionStatus, setConnectionStatus] = useState("Connect");
+  const [connectionStatus, setConnectionStatus] = useState("disconnected");
 
   const mqttConnect = useCallback((host: string, mqttOption: any) => {
-    setConnectionStatus("Connecting");
+    setConnectionStatus("connecting");
     setClient(mqtt.connect(host, mqttOption));
   }, []);
 
   useEffect(() => {
     if (client) {
       client.on("connect", () => {
-        setConnectionStatus("Connected");
+        setConnectionStatus("connected");
       });
       client.on("error", (err: any) => {
         console.error("Connection error: ", err);
@@ -47,7 +47,7 @@ export const MQTTProvider = ({ children }: { children: ReactNode }) => {
     if (client) {
       console.log(`[${MQTTProvider.name}]: MQTT disconnected`);
       client.end();
-      setConnectionStatus("Connect");
+      setConnectionStatus("disconnected");
     }
   }, [client]);
 
