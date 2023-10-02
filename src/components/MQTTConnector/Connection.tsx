@@ -4,7 +4,7 @@ import { useMQTT } from "@/contexts/MQTTProvider";
 import { Button } from "../Button";
 
 export const Connection = () => {
-  const { mqttConnect, mqttDisconnect, connectionStatus } = useMQTT();
+  const { mqttConnect, mqttDisconnect } = useMQTT();
   const [connectionOptions, setConnectionOptions] = useState({
     host: "localhost",
     clientId: "react_client",
@@ -32,24 +32,16 @@ export const Connection = () => {
     }));
   };
 
-  const backgroundColor =
-    connectionStatus === "connected" ? "bg-emerald-700" : "bg-transparent";
-
   return (
-    <Card className={`border ${backgroundColor}`}>
+    <Card className="border bg-transparent">
       <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
         <div className="text-right">
-          {connectionStatus === "disconnected" && (
-            <Button className="mr-2" type="submit">
-              Connect
-            </Button>
-          )}
-
-          {connectionStatus === "connected" && (
-            <Button type="button" onClick={mqttDisconnect}>
-              Disconnect
-            </Button>
-          )}
+          <Button className="mr-2" type="submit">
+            Connect
+          </Button>
+          <Button type="button" onClick={mqttDisconnect}>
+            Disconnect
+          </Button>
         </div>
         <label className="text-sm text-slate-100" htmlFor="host">
           Host
