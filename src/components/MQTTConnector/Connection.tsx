@@ -33,7 +33,7 @@ export const Connection = () => {
   };
 
   return (
-    <Card className="border bg-transparent">
+    <Card className={`border bg-transparent`}>
       <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
         <div className="text-right">
           {connectionStatus === "disconnected" && (

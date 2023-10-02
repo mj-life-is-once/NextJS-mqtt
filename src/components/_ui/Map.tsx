@@ -32,9 +32,9 @@ const Map = ({
 
   const [map, setMap] = useState(null);
   //   const [coordinates, setCoordinates] = useState(center);
-  const MyCustomMarker = ({ lat, lng }: { lat: number; lng: number }) => (
-    <span className="material-icons">place</span>
-  );
+  //   const MyCustomMarker = ({ lat, lng }: { lat: number; lng: number }) => (
+  //     <span className="material-icons">place</span>
+  //   );
   const onLoad = useCallback((map: any) => {
     // This is just an example of getting and using the map instance!!! don't just blindly copy!
     const bounds = new window.google.maps.LatLngBounds(center);
