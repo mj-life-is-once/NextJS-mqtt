@@ -13,11 +13,16 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.11",
     "@mui/material": "^5.14.11",
+    "@react-three/drei": "^9.86.3",
+    "@react-three/fiber": "^8.14.4",
+    "leva": "^0.9.35",
     "mqtt": "^5.0.5",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "tailwind-merge": "^1.14.0"
+    "react-draggable": "^4.4.6",
+    "tailwind-merge": "^1.14.0",
+    "three": "^0.157.0"
   },
   "devDependencies": {
     "@types/node": "latest",

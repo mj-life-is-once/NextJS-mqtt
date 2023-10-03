@@ -2,13 +2,19 @@ import { useMQTT } from "@/contexts/MQTTProvider";
 import { Card } from "../Card";
 import { Button } from "../Button";
 import { useState } from "react";
+import { useFocus } from "@/contexts/FocusProvider";
 
+const samplePayload = {
+  color: "#FFBF00",
+};
 export const Publisher = () => {
   const { qosOptions, mqttPublish } = useMQTT();
+  const { setFocus } = useFocus();
+
   const [pubTopic, setPubTopic] = useState({
-    topic: "testtopic/react",
+    topic: "canvas/cube/color",
     qos: 0,
-    payload: "This is your message to send",
+    payload: JSON.stringify(samplePayload, undefined, 2),
   });
 
   const onSubmit = (event: any) => {
@@ -39,6 +45,8 @@ export const Publisher = () => {
           id="topic"
           value={pubTopic.topic}
           onChange={handleChange}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
         />
         <label htmlFor="qos" className="text-sm text-slate-100">
           QoS
@@ -48,6 +56,8 @@ export const Publisher = () => {
             className="p-1 text-slate-500 text-sm rounded"
             value={pubTopic.qos}
             onChange={handleChange}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
           >
             {qosOptions.map(
               (option: { label: string; value: number }, index: number) => (
@@ -58,14 +68,17 @@ export const Publisher = () => {
         </div>
 
         <label htmlFor="payload" className="text-sm text-slate-100">
-          Payload
+          Payload (json)
         </label>
-        <input
+        <textarea
           className="block w-full text-sm text-slate-500 p-1 rounded"
-          type="text"
+          rows={4}
+          cols={50}
           id="payload"
           value={pubTopic.payload}
           onChange={handleChange}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
         />
       </form>
     </Card>

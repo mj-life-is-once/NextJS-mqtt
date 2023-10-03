@@ -2,18 +2,23 @@ import { useState } from "react";
 import { Card } from "../Card";
 import { useMQTT } from "@/contexts/MQTTProvider";
 import { Button } from "../Button";
+import { useFocus } from "@/contexts/FocusProvider";
 
 export const Connection = () => {
   const { mqttConnect, mqttDisconnect, connectionStatus } = useMQTT();
   const [connectionOptions, setConnectionOptions] = useState({
+    protocol: "ws",
     host: "localhost",
     clientId: "react_client",
     port: "9001",
+    username: "user",
+    password: "password",
   });
+  const { setFocus } = useFocus();
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    console.log(connectionOptions);
+    // console.log(connectionOptions);
     const { host, clientId, port } = connectionOptions;
     const url = `ws://${host}:${port}`;
     const options = {
@@ -35,21 +40,21 @@ export const Connection = () => {
   return (
     <Card className="border bg-transparent">
       <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
-        <div className="text-right">
+        <div className="flex flex-row gap-2 justify-end items-center">
           {connectionStatus === "disconnected" ? (
-            <Button className="mr-2" type="submit">
-              Connect
-            </Button>
-          ) : (
-            <Button className="mr-2" type="button" disabled={true}>
+            <Button type="submit">Connect</Button>
+          ) : connectionStatus === "connected" ? (
+            <Button type="button" disabled={true}>
               Connected
             </Button>
-          )}
-          {connectionStatus === "connected" && (
-            <Button type="button" onClick={mqttDisconnect}>
-              Disconnect
+          ) : (
+            <Button type="button" disabled={true}>
+              {connectionStatus}
             </Button>
           )}
+          <Button type="button" onClick={mqttDisconnect}>
+            Disconnect
+          </Button>
         </div>
         <label className="text-sm text-slate-100" htmlFor="host">
           Host
@@ -60,6 +65,8 @@ export const Connection = () => {
           id="host"
           value={connectionOptions.host}
           onChange={handleChange}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
         />
         <label className="text-sm text-slate-100" htmlFor="port">
           Port{" "}
@@ -70,6 +77,8 @@ export const Connection = () => {
           id="port"
           value={connectionOptions.port}
           onChange={handleChange}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
         />{" "}
         <label className="text-sm text-slate-100" htmlFor="clientId">
           Client ID
@@ -80,6 +89,8 @@ export const Connection = () => {
           id="clientId"
           value={connectionOptions.clientId}
           onChange={handleChange}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
         />
       </form>
     </Card>

@@ -34,10 +34,10 @@ export const MQTTProvider = ({ children }: { children: ReactNode }) => {
         client.end();
       });
       client.on("reconnect", () => {
-        setConnectionStatus("Reconnecting");
+        setConnectionStatus("reconnecting");
       });
       client.on("message", (topic: string, message: any) => {
-        const payload = { topic, message: message.toString() };
+        const payload = { topic: topic, message: message.toString() };
         setPayload(payload);
       });
     }

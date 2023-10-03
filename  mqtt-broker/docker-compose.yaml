@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  mosquitto:
+    image: eclipse-mosquitto
+    container_name: mosquitto-broker
+    volumes:
+      - ./mosquitto:/mosquitto/
+      - ./mosquitto/config:/mosquitto/config/
+    ports:
+      - 1883:1883
+      - 9001:9001

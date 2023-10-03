@@ -2,14 +2,16 @@ import { useMQTT } from "@/contexts/MQTTProvider";
 import { Card } from "../Card";
 import { Button } from "../Button";
 import { useState } from "react";
+import { useFocus } from "@/contexts/FocusProvider";
 
 export const Subscriber = () => {
   const { mqttSubscribe, mqttUnSubscribe, isSubscribed, qosOptions } =
     useMQTT();
   const [subTopic, setSubtopic] = useState({
-    topic: "testtopic/react",
+    topic: "canvas/cube/+",
     qos: 0,
   });
+  const { setFocus } = useFocus();
 
   const onSubmit = (event: any) => {
     event.preventDefault();
@@ -48,6 +50,8 @@ export const Subscriber = () => {
           id="topic"
           defaultValue={subTopic.topic}
           onChange={handleChange}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
         />
         <label htmlFor="qos" className="text-sm text-slate-100">
           QoS
@@ -56,7 +60,10 @@ export const Subscriber = () => {
           <select
             className="p-1 text-slate-500 text-sm rounded"
             value={subTopic.qos}
+            id="qos"
             onChange={handleChange}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
           >
             {qosOptions.map(
               (option: { label: string; value: number }, index: number) => (

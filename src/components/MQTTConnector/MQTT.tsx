@@ -62,7 +62,7 @@ export const MQTT = ({
     <div>
       {show && (
         <Popup
-          className="bg-slate-800 w-full h-full"
+          className="bg-slate-700 w-3/5 h-full"
           title="MQTT Tools"
           onClose={onClose}
         >
@@ -76,7 +76,6 @@ export const MQTT = ({
                 <h1 className="font-extrabold">Connector</h1>
               </AccordionSummary>
               <AccordionDetails>
-                {" "}
                 <Connection />
               </AccordionDetails>
             </Accordion>
