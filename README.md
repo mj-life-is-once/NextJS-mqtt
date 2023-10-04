@@ -40,6 +40,9 @@ Open `localhost:3000` to check the application.
 
 ### STEP4: Use any microcontroller to interact with the cube!
 
+I added a simplied arduino code example under `/arduino` folder. With the code, you can control the rotation
+![](/media/esp-mqtt.gif)
+
 ## Getting Started
 
 First, run the development server:
