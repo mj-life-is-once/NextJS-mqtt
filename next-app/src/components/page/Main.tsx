@@ -38,21 +38,21 @@ export const MainPage = ({ children }: { children?: ReactNode }) => {
             >
               MQTT Tools
             </Button>
-            {/* <Portal showModal={showMQTT}> */}
-            <FocusProvider>
-              <div className="absolute text-left z-20 w-full h-full left-1/2 ">
-                <MQTT
-                  show={showMQTT}
-                  onClose={() => {
-                    setShowMQTT(false);
-                  }}
-                />
-              </div>
-            </FocusProvider>
-            {/* </Portal> */}
           </div>
           {children}
         </div>
+        <FocusProvider>
+          <div
+            className={`absolute top-0 text-left z-20 w-full h-full pointer-events-none`}
+          >
+            <MQTT
+              show={showMQTT}
+              onClose={() => {
+                setShowMQTT(false);
+              }}
+            />
+          </div>
+        </FocusProvider>
       </ThemeProvider>
     </main>
   );

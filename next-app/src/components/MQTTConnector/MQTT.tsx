@@ -59,10 +59,10 @@ export const MQTT = ({
   onClose: () => void;
 }) => {
   return (
-    <div>
+    <>
       {show && (
         <Popup
-          className="bg-slate-700 w-3/5 h-full"
+          className="bg-slate-700 w-2/5 min-w-min h-3/4 pointer-events-auto"
           title="MQTT Tools"
           onClose={onClose}
         >
@@ -119,6 +119,6 @@ export const MQTT = ({
         </Popup>
       )}
       {children}
-    </div>
+    </>
   );
 };

@@ -40,7 +40,7 @@ export const Connection = () => {
   return (
     <Card className="border bg-transparent">
       <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
-        <div className="flex flex-row gap-2 justify-end items-center">
+        <div className="flex flex-row flex-wrap gap-2 justify-end items-center">
           {connectionStatus === "disconnected" ? (
             <Button type="submit">Connect</Button>
           ) : connectionStatus === "connected" ? (
