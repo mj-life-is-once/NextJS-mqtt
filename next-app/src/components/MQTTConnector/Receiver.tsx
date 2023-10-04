@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card } from "../Card";
 import { useMQTT } from "@/contexts/MQTTProvider";
+import { Button } from "../Button";
 
 export const Receiver = () => {
   const [messages, setMessages] = useState<any[]>([]);
@@ -15,6 +16,16 @@ export const Receiver = () => {
   return (
     <Card className="border bg-neutral-800">
       <div className="flex flex-col h-80 overflow-auto">
+        <div className="text-right pb-5">
+          <Button
+            type="button"
+            onClick={() => {
+              setMessages([]);
+            }}
+          >
+            Refresh
+          </Button>
+        </div>
         <div className="flex flex-row justify-around gap-3 mb-3">
           <div className="text-sm text-center text-white uppercase font-extrabold">
             Topic
