@@ -1,7 +1,7 @@
 import { Center } from "@react-three/drei";
 import { useMQTT } from "@/contexts/MQTTProvider";
 import { useEffect, useRef, useState } from "react";
-// import { useFrame } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 
 export const Square = () => {
   const { payload } = useMQTT();
@@ -30,9 +30,9 @@ export const Square = () => {
     }
   }, [payload]);
 
-  // useFrame((state) => {
-  //   console.log(state.camera.position);
-  // });
+  useFrame((state) => {
+    console.log(state.camera);
+  });
 
   return (
     <Center top>
