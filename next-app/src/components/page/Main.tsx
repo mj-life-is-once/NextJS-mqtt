@@ -49,7 +49,6 @@ export const MainPage = ({ children }: { children?: ReactNode }) => {
                 />
               </div>
             </FocusProvider>
-
             {/* </Portal> */}
           </div>
           {children}

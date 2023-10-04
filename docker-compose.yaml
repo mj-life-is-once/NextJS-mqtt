@@ -9,3 +9,10 @@ services:
     ports:
       - 1883:1883
       - 9001:9001
+  next-app:
+    build: ./next-app
+    container_name: next-app
+    ports:
+      - 3000:3000
+    depends_on:
+      - mosquitto
