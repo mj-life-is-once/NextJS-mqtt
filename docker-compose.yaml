@@ -14,7 +14,5 @@ services:
     container_name: next-app
     ports:
       - 3000:3000
-    volumes:
-      - ./next-app:/app
     depends_on:
       - mosquitto
