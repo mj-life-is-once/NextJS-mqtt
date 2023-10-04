@@ -62,7 +62,7 @@ export const MQTT = ({
     <>
       {show && (
         <Popup
-          className="bg-slate-700 w-2/5 min-w-min h-3/4 pointer-events-auto"
+          className="bg-slate-700 w-2/5 h-3/4 pointer-events-auto"
           title="MQTT Tools"
           onClose={onClose}
         >
