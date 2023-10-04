@@ -1,9 +1,3 @@
-# This is a MQTT.js example implemented for NextJs.
-
-## Resource
-
-- MQTT-Client examples : [https://github.com/emqx/MQTT-Client-Examples](https://github.com/emqx/MQTT-Client-Examples)
-
 ## Getting Started
 
 First, run the development server:

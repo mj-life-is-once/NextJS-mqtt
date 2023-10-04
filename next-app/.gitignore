@@ -36,7 +36,3 @@ next-env.d.ts
 
 # secret
 secrets.json
-
-# log or db file
-*.log
-*.db
