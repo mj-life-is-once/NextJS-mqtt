@@ -22,9 +22,9 @@ float temperature;
 unsigned long timer = 0;
 
 EspMQTTClient client(
-  "CT's 2.4G WiFi",
-  "CT's 2.4G Lab!", // wifi password
-  "192.168.1.233",  // MQTT Broker server ip
+  "WIFI_SSID",
+  "WIFI_PASSWORD", // wifi password
+  "BROKER_IP",  // MQTT Broker server ip
   "MQTTUsername",   // Can be omitted if not needed
   "MQTTPassword",   // Can be omitted if not needed
   "feather_esp8266",     // Client name that uniquely identify your device
